@@ -11,8 +11,13 @@ contract Funding {
     uint funding; //amount loaned to contract then to small miner
     address barricksFund;
 
+    //constructor
+    function Funding(){
+    }
+
+
     //be able to receive ether payment for this contract through payable.
-    function SendFunds (uint fund) {
+    function sendFunds (uint fund) payable {
         barricksFund = msg.sender;
         funding = fund;
     }
@@ -40,7 +45,7 @@ contract Land {
     bool barrickOwnDeedOfLand = false; //Has Barrick changed ownership on land
     uint funding; //amount loaned to contract then to small miner
 
-    function Land (uint fundVetting){
+    function Land (uint fundVetting) payable {
         funding = fundVetting;
     }
 
