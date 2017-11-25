@@ -12,7 +12,7 @@ contract Funding {
     address barricksFund;
 
     //be able to receive ether payment for this contract through payable.
-    function Funding payable (uint fund) {
+    function SendFunds (uint fund) {
         barricksFund = msg.sender;
         funding = fund;
     }
