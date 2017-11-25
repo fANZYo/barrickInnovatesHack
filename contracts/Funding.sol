@@ -25,6 +25,7 @@ contract Funding {
             SendFunds(msg.value);
             rating = ratings;
             state = newState;
+            Land checkLand = Land(msg.value);
         }
     }
 }
@@ -38,6 +39,10 @@ contract Land {
     bool deedOfLandGiven; //Has deeds of land been given by ASM : True or False 
     bool barrickOwnDeedOfLand = false; //Has Barrick changed ownership on land
     uint funding; //amount loaned to contract then to small miner
+
+    function Land (uint fundVetting){
+        funding = fundVetting;
+    }
 
     //be able to receive ether payment for this contract through payable.
     function SendLoanToASM (uint loan, address asmADDR) {
