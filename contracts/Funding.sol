@@ -4,33 +4,37 @@ pragma solidity ^0.4.18;
 
 contract Funding {
 
-    address asmADD = 0xa306084a0ed9cdfa1d54f9db0009bda0f35abdff; //unique address provided 
-    address barrickADD = 0xfd7597af18fb14fe283bee7279ca3dda4115df28; // address for barrick
+    //address asmADD = 0xa306084a0ed9cdfa1d54f9db0009bda0f35abdff; //unique address provided 
+    address barricksFund; // address for barrick
     bool state; //state after vetting on ASM : True or False (active or inactive)
     int rating; //rating provided after vetting on ASM : between 1-3 (3 being worst)
     uint funding; //amount loaned to contract then to small miner
-    address barricksFund;
-
+    Land checkLand;
+    
     //constructor
-    function Funding(){
+    function Funding() public payable{
+        barricksFund = msg.sender;
+        funding = msg.value;
     }
 
 
     //be able to receive ether payment for this contract through payable.
-    function SendFunds (uint fund) payable {
+    function SendFunds () public payable {
         barricksFund = msg.sender;
-        funding = fund;
+        funding = msg.value;
+        barricksFund.transfer(msg.value);
     }
     
 
 
-    function Vetting(bool newState,int ratings) {
+    function Vetting(bool newState,int ratings) public payable {
         //add rating+status to blockchain
         if(newState){
-            SendFunds(msg.value);
+            SendFunds();
             rating = ratings;
             state = newState;
-            Land checkLand = Land(msg.value);
+            checkLand = Land(msg.value);
+
         }
     }
 }
@@ -40,38 +44,40 @@ contract Funding {
 
 contract Land {
     address asm; //ASM address 
-    address barrick = 0xfd7597af18fb14fe283bee7279ca3dda4115df28; //barrick address
+    address barrick; //barrick address
     bool deedOfLandGiven; //Has deeds of land been given by ASM : True or False 
     bool barrickOwnDeedOfLand = false; //Has Barrick changed ownership on land
     uint funding; //amount loaned to contract then to small miner
 
-    function Land (uint fundVetting) payable {
-        funding = fundVetting;
+    function Land () public payable {
+        funding = msg.value;
     }
 
-    //be able to receive ether payment for this contract through payable.
-    function SendLoanToASM (uint loan, address asmADDR) {
+    //be able to .
+    function SendLoanToASM (uint loan, address asmADDR) public {
         //funding sent
         asm = asmADDR;
         funding = loan; 
+        asm.transfer(loan);
     }
 
-    function sendLoanBack (uint loan, address barrADDR){
+    function sendLoanBack (uint loan) public {
         //money sent back to Barrick
-        barrick = barrADDR;
+        barrick = msg.sender;
         funding = loan;
+        barrick.transfer(loan);
     }
     
 
-    function LandDeedGiven (bool state) {
+    function LandDeedGiven (bool state) public payable{
         //add rating to blockchain
         if(state){
             deedOfLandGiven = state;
-            SendLoanToASM(funding,0xa306084a0ed9cdfa1d54f9db0009bda0f35abdff);
+            SendLoanToASM(msg.value,asm);
             barrickOwnDeedOfLand = true;
         }else{
             deedOfLandGiven = state;
-            sendLoanBack(funding,barrick);
+            sendLoanBack(msg.value);
         }
         
     }
