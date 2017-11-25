@@ -70,8 +70,10 @@ class App extends Component {
         vettingInstance = instance
 
         // Stores a given value, 5 by default.
-        return vettingInstance.SendFunds(15, {from: '0xfd7597Af18fB14fe283Bee7279ca3DdA4115df28'});
-      });
+        return vettingInstance.Funding(15, {from: '0xfd7597Af18fB14fe283Bee7279ca3DdA4115df28'});
+      });//.then((instance) => {
+      //   return vettingInstance.Vetting(true, {from: '0x4E7D84B9Fe0DE2E075bD881eAa363E5DC2CbBe4C'});
+      // });
     })
   }
 
