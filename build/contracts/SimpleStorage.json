@@ -341,8 +341,13 @@
       "events": {},
       "links": {},
       "address": "0x345ca3e014aaf5dca488057592ee47305d9b3e10"
+    },
+    "5777": {
+      "events": {},
+      "links": {},
+      "address": "0xb11d951a05dbd4fc1b427ce2e1396b7e85092879"
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2017-11-25T13:47:32.160Z"
+  "updatedAt": "2017-11-25T17:54:26.897Z"
 }
