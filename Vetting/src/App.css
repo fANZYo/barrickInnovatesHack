@@ -1,0 +1,10 @@
+body {
+  color: #555
+}
+
+h2 {
+  color: black;
+  font-size: 1.375em;
+  font-weight: bold;
+  margin: .5em 0 .2em 0;
+}
