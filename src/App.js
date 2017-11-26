@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import VettingContract from '../build/contracts/Funding.json';
+// import SimpleStorageContract from '../build/contracts/SimpleStorage.json'
 import getWeb3 from './utils/getWeb3';
 
-import './css/oswald.css';
-import './css/open-sans.css';
-import './css/pure-min.css';
+import './reset.css';
 import './App.css';
+
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import FlatButton from 'material-ui/FlatButton';
+import AppBar from 'material-ui/AppBar';
 
 class App extends Component {
   constructor(props) {
@@ -50,45 +53,59 @@ class App extends Component {
   }
 
   instantiateContract() {
-    /*
-     * SMART CONTRACT EXAMPLE
-     *
-     * Normally these functions would be called in the context of a
-     * state management library, but for convenience I've placed them here.
-     */
-
     const contract = require('truffle-contract')
     const vetting = contract(VettingContract)
     vetting.setProvider(this.state.web3.currentProvider)
 
     // Declaring this for later so we can chain functions on SimpleStorage.
-    var vettingInstance
+    let vettingInstance
 
     // Get accounts.
     this.state.web3.eth.getAccounts((error, accounts) => {
       vetting.deployed().then((instance) => {
-        vettingInstance = instance
+        vettingInstance = instance;
 
         // Stores a given value, 5 by default.
-        return vettingInstance.Funding(15, {from: '0xfd7597Af18fB14fe283Bee7279ca3DdA4115df28'});
-      });//.then((instance) => {
-      //   return vettingInstance.Vetting(true, {from: '0x4E7D84B9Fe0DE2E075bD881eAa363E5DC2CbBe4C'});
-      // });
+        return vettingInstance.SendFunds({value: this.state.web3.toWei(15, 'ether'), from: accounts[0]});
+      });
     })
+  }
+
+  onFileLoad() {
+    console.log('thank you');
   }
 
   render() {
     return (
-      <div className="App">
-        <nav className="navbar pure-menu pure-menu-horizontal">
-            <a href="#" className="pure-menu-heading pure-menu-link">Genesis</a>
-        </nav>
-
-        <div  className="container">
-          <input type="file" name="file" />
-          <button type="submit">Send</button>
+      <MuiThemeProvider>
+        <div className="container">
+          <AppBar
+            title="Upload Image"
+            className="bar"
+            style={{
+              backgroundColor: '#333',
+              marginBottom: "2em"
+            }}
+          />
+          <img
+            src="http://www.moneyhome.com/wp-content/uploads/2017/10/Barrick-Gold-Corporation-ABX-Logo-364x150.jpg"
+            alt="Barrick logo"
+            style={{
+              marginBottom: '2em'
+            }}
+          />
+          <FlatButton
+            primary={true}
+            label="Choose an Image"
+            backgroundColor="#ddd"
+            labelStyle={{
+              color: '#333'
+            }}
+          >
+            <input type="file" id="imageButton" onChange={this.onFileLoad.bind(this)}></input>
+          </FlatButton>
         </div>
-      </div>
+      </MuiThemeProvider>
     );
   }
 }
