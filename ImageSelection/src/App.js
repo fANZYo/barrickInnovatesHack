@@ -21,21 +21,6 @@ class App extends Component {
   }
 
   componentWillMount() {
-    // Get network provider and web3 instance.
-    // See utils/getWeb3 for more info.
-
-    getWeb3
-    .then(results => {
-      this.setState({
-        web3: results.web3
-      })
-
-      // Instantiate contract once web3 provided.
-      this.instantiateContract()
-    })
-    .catch(() => {
-      console.log('Error finding web3.')
-    })
 
     const data = null;
     const that = this;
@@ -66,13 +51,25 @@ class App extends Component {
         vettingInstance = instance;
 
         // Stores a given value, 5 by default.
-        return vettingInstance.SendFunds({value: this.state.web3.toWei(15, 'ether'), from: accounts[0]});
+        return vettingInstance.SendFunds({value: this.state.web3.toWei(10, 'ether'), from: accounts[0]});
       });
     })
+    window.open('http://localhost:3002');
   }
 
-  onFileLoad() {
-    console.log('thank you');
+  handleClick() {
+    getWeb3
+    .then(results => {
+      this.setState({
+        web3: results.web3
+      })
+
+      // Instantiate contract once web3 provided.
+      this.instantiateContract()
+    })
+    .catch(() => {
+      console.log('Error finding web3.')
+    })
   }
 
   render() {
@@ -97,13 +94,22 @@ class App extends Component {
           <FlatButton
             primary={true}
             label="Choose an Image"
-            backgroundColor="#D4AF37"
+            backgroundColor="#ddd"
             labelStyle={{
               color: '#333'
             }}
           >
-            <input type="file" id="imageButton" onChange={this.onFileLoad.bind(this)}></input>
+            <input type="file" id="imageButton"></input>
           </FlatButton>
+          <FlatButton
+            primary={true}
+            label="Submit"
+            backgroundColor="#D4AF37"
+            labelStyle={{
+              color: '#333'
+            }}
+            onClick={this.handleClick.bind(this)}
+          />
         </div>
       </MuiThemeProvider>
     );

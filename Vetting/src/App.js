@@ -146,6 +146,7 @@ class App extends Component {
             />
             <FlatButton
               label="Submit"
+              onClick={this.handleClick}
               style={{
                 background: '#D4AF37',
                 marginTop: '1em',
