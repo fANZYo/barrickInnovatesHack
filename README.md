@@ -19,9 +19,38 @@ Supporting employment rate in local areas will lead to reduced conflicts, decrea
 
 #### Ganache
 ```
-git clone https://github.com/trufflesuite/ganache.git
-npm install
-npm start
+$ git clone https://github.com/trufflesuite/ganache.git
+$ npm install
+$ npm start
 ```
+
+#### Truffle
+
+`# sudo npm i -g truffle`
+
+Then you'll need to compile the smart contracts and migrate them to the blockchain.
+
+From the project folder run:
+```
+$ truffle compile
+$ truffle migrate
+```
+
+## Running
+
+Once installed you'll need 3 terminal windows and run from the root folder in order:
+```
+$ cd ganache
+$ npm start
+```
+```
+$ cd ImageSelection
+$ npm start
+```
+```
+$ cd Vetting
+$ npm start
+```
+
 
 
