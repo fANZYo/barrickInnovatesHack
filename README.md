@@ -14,3 +14,14 @@ Supporting employment rate in local areas will lead to reduced conflicts, decrea
 ## Flowchart
 | ![Flow chart backend](https://i.imgur.com/TvociW5.jpg?1) | ![Flow chart blockchain](https://i.imgur.com/fYL88HS.jpg?1) |
 | -------------------------------------------------------- | ----------------------------------------------------------- |
+
+## Install
+
+#### Ganache
+```
+git clone https://github.com/trufflesuite/ganache.git
+npm install
+npm start
+```
+
+
