@@ -21,10 +21,26 @@ class App extends Component {
     }
   }
 
-  componentWillMount() {
-    // Get network provider and web3 instance.
-    // See utils/getWeb3 for more info.
+  instantiateContract() {
+    const contract = require('truffle-contract')
+    const vetting = contract(VettingContract)
+    vetting.setProvider(this.state.web3.currentProvider)
 
+    // Declaring this for later so we can chain functions on SimpleStorage.
+    let vettingInstance
+
+    // Get accounts.
+    this.state.web3.eth.getAccounts((error, accounts) => {
+      vetting.deployed().then((instance) => {
+        vettingInstance = instance;
+
+        // Stores a given value, 5 by default.
+        return vettingInstance.Vetting(true, 23, {from: accounts[2]});
+      });
+    })
+  }
+
+  handleClick() {
     getWeb3
     .then(results => {
       this.setState({
@@ -34,26 +50,9 @@ class App extends Component {
       // Instantiate contract once web3 provided.
       this.instantiateContract()
     })
-    .catch(() => {
+      .catch((e) => {
+        console.error(e);
       console.log('Error finding web3.')
-    })
-  }
-
-  instantiateContract() {
-    const contract = require('truffle-contract')
-    const vetting = contract(VettingContract)
-    vetting.setProvider(this.state.web3.currentProvider)
-
-    let vettingInstance
-
-    // Get accounts.
-    this.state.web3.eth.getAccounts((error, accounts) => {
-      vetting.deployed().then((instance) => {
-        vettingInstance = instance;
-
-        // Stores a given value, 5 by default.
-        return vettingInstance.SendFunds({value: this.state.web3.toWei(15, 'ether'), from: accounts[0]});
-      });
     })
   }
 
@@ -146,7 +145,7 @@ class App extends Component {
             />
             <FlatButton
               label="Submit"
-              onClick={this.handleClick}
+              onClick={this.handleClick.bind(this)}
               style={{
                 background: '#D4AF37',
                 marginTop: '1em',

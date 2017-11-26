@@ -54,7 +54,7 @@ class App extends Component {
         return vettingInstance.SendFunds({value: this.state.web3.toWei(10, 'ether'), from: accounts[0]});
       });
     })
-    window.open('http://localhost:3002');
+    window.open('http://localhost:3001');
   }
 
   handleClick() {

@@ -29,11 +29,9 @@ contract Funding {
     function Vetting(bool newState,int ratings) public payable {
         //add rating+status to blockchain
         if(newState){
-            SendFunds();
             rating = ratings;
             state = newState;
-            checkLand = Land(msg.value);
-
+            Land.send(funding);
         }
     }
 }
