@@ -25,7 +25,7 @@ class App extends Component {
     const data = null;
     const that = this;
     const xhr = new XMLHttpRequest();
-    xhr.open('GET', 'http://localhost:4000');
+    xhr.open('GET', 'http://localhost:4000/result');
 
     xhr.addEventListener('readystatechange', function() {
       if (this.readyState === 4) {
