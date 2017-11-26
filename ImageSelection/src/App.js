@@ -97,7 +97,7 @@ class App extends Component {
           <FlatButton
             primary={true}
             label="Choose an Image"
-            backgroundColor="#ddd"
+            backgroundColor="#D4AF37"
             labelStyle={{
               color: '#333'
             }}
