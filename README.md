@@ -36,9 +36,19 @@ $ truffle compile
 $ truffle migrate
 ```
 
+#### Flask
+
+The server also runs on flask so you'll need to install it to run the model but it's not fully implemented with the front end so not needed
+
+`$ pip install flask`
+
 ## Running
 
-Once installed you'll need 3 terminal windows and run from the root folder in order:
+Once installed you'll need 4 terminal windows and run from the root folder in order:
+```
+$ cd datasci
+$ python gold-app.py
+```
 ```
 $ cd ganache
 $ npm start
@@ -51,6 +61,3 @@ $ npm start
 $ cd Vetting
 $ npm start
 ```
-
-
-
