@@ -17,9 +17,6 @@ contract Funding {
         funding = msg.value;
     }
 
-    function get() returns(uint) {
-      return this.balance;
-    }
 
     //be able to receive ether payment for this contract through payable.
     function SendFunds() public payable {
