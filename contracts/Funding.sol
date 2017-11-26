@@ -19,9 +19,8 @@ contract Funding {
 
 
     //be able to receive ether payment for this contract through payable.
-    function SendFunds () public payable {
+    function SendFunds() public payable {
         barricksFund = msg.sender;
-        funding = msg.value;
         barricksFund.transfer(msg.value);
     }
     
