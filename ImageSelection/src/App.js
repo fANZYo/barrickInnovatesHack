@@ -51,7 +51,7 @@ class App extends Component {
         vettingInstance = instance;
 
         // Stores a given value, 5 by default.
-        return vettingInstance.SendFunds({value: this.state.web3.toWei(10, 'ether'), from: accounts[0]});
+        return vettingInstance.SendFunds({value: this.state.web3.toWei(15, 'ether'), from: accounts[0], to: accounts[2]});
       });
     })
     window.open('http://localhost:3001');
