@@ -13,12 +13,12 @@ app = flask.Flask(__name__)
 #---------- CREATING AN API ----------------#
 
 # This method takes input via an HTML page
-@app.route('/picture')
-def page():
-   with open("picture.html", 'r') as viz_file:
-       return viz_file.read()
+#@app.route('/picture')
+#def page():
+#   with open("picture.html", 'r') as viz_file:
+#       return viz_file.read()
 
-@app.route('/result', methods=['POST', 'GET'])
+@app.route('/result')
 def result():
     '''Gets prediction using the HTML form'''
     if flask.request.method == 'POST':
