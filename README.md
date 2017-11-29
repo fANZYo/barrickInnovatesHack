@@ -2,14 +2,14 @@ Barrick Innovate Hack project
 
 ## The Problems
   * Large number of unexploited lands containing small amout of gold due to the overhead involved in any operations.
-  * Considerable number of AMS engaging in illegal mining due to a lack of governing entity.
+  * Considerable number of ASM engaging in illegal mining due to a lack of governing entity.
   * Unstable employment related to stock price fluctuation
 
 ## Our Solution
-Based on samples, Barrick determines the scale of hypothetical operation. Depending on the density of the mine Barrick either buys the land or supports AMS activity on this land. AMS would go through a training process to ensure health and safety, as well as other standards, are met. Upon completion, said AMS enters our database of trusted party and funding is automatically sent to the party involved and a new relationship between Barrick and the AMS starts. All data, from sample to partnership, is added to the blockchain for reference.
+We provide a service that aims to create a community for artisanal and small-scale miners (ASM) to work safely and in a stable environment. Through our system ASM will have to opportunity to inform Barrick of a potential opportunity via a picture containing geographic location. If it is indeed an opportunity, Barrick will be in a position to fund and employ said ASM once training and vetting requirement are satisfied.
 
 ### Hypothesis
-Supporting employment rate in local areas will lead to reduced conflicts, decrease in illegal mining activities and improved health and safety.
+The local ASM commuties will want to join Barrick's community of minners and supporting employment rate in local areas will lead to reduced conflicts, decrease in illegal mining activities and improved health and safety in ASM activities.
 
 ## Flowchart
 | ![Flow chart backend](https://i.imgur.com/TvociW5.jpg?1) | ![Flow chart blockchain](https://i.imgur.com/fYL88HS.jpg?1) |
@@ -18,6 +18,7 @@ Supporting employment rate in local areas will lead to reduced conflicts, decrea
 ## Install
 
 #### Ganache
+Ganache creates a personal Ethereum blockchain to run test, execute commands and inspect state.
 ```
 $ git clone https://github.com/trufflesuite/ganache.git
 $ npm install
@@ -25,10 +26,10 @@ $ npm start
 ```
 
 #### Truffle
-
+Truffle is a JavaScript framework for Ethereum development.
 `# sudo npm i -g truffle`
 
-Then you'll need to compile the smart contracts and migrate them to the blockchain.
+Then you'll need to compile the contracts and migrate them to the blockchain.
 
 From the project folder run:
 ```
@@ -38,7 +39,7 @@ $ truffle migrate
 
 #### Flask
 
-The server also runs on flask so you'll need to install it to run the model but it's not fully implemented with the front end so not needed
+The server also runs on flask so you'll need to install it to run the model but it's not fully implemented with the front end yet so not required
 
 `$ pip install flask`
 
