@@ -6,7 +6,7 @@ Barrick Innovate Hack project
   * Unstable employment related to stock price fluctuation
 
 ## Our Solution
-We provide a service that aims to create a community for artisanal and small-scale miners (ASM) to work safely and in a stable environment. Through our system ASM will have to opportunity to inform Barrick of a potential opportunity via a picture containing geographic location. If it is indeed an opportunity, Barrick will be in a position to fund and employ said ASM once training and vetting requirement are satisfied.
+We provide a service that aims to create a community for artisanal and small-scale miners (ASM) to work safely and in a stable environment. Through our system ASM will have the opportunity to inform Barrick of a potential opportunity via a picture containing geographic location. If it is indeed an opportunity, Barrick will be in a position to fund and employ said ASM once training and vetting requirement are satisfied.
 
 ### Hypothesis
 The local ASM commuties will want to join Barrick's community of minners and supporting employment rate in local areas will lead to reduced conflicts, decrease in illegal mining activities and improved health and safety in ASM activities.
